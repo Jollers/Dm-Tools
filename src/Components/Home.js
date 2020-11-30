@@ -4,7 +4,7 @@ import React from "react";
 function Home() {
     return (
         <div className="Home">
-            <a href="http://www.gay.com">Jocke är bäst!</a>
+            <h1>Home</h1>
         </div>
     );
 };
