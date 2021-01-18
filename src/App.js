@@ -10,10 +10,11 @@ import Login from './Components/Login';
 function App() {
   return (
     <Router>
+      <Route path="/" exact component={Login} />
       <div className="App">
         <Navigationbar />
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" component={Home} />
           {/* <Route path="/Characters" component={Characters} /> */}
           <Route path="/Music" component={Music} />
           {/* <Route path="/Create" component={Create} /> */}
