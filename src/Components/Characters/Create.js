@@ -8,7 +8,7 @@ function Create() {
     
     return (
         <div>
-            <h1>Hej</h1>
+            <h1>Create New NPC</h1>
             <CreateForm/>
         </div>
     );

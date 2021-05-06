@@ -7,9 +7,18 @@ function Characters() {
     return (
         <div class="Characters">
             <h1>Characters</h1>
-            <Link to="./Create">
-                <div>Knapp Här</div>
-            </Link>
+            <Container>
+                <Row>
+                    <Col>
+                        <Link to="./Create">
+                            <div>Create new NPC</div>
+                        </Link>
+                    </Col>
+                    <Col>
+                        list
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };
