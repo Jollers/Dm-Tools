@@ -18,55 +18,25 @@ changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  submitHandler(event)
-  {
-      const { //denna const gör bara att jag inte behöver skriva this.state.email etc i posten.
-        npcName,
-        npcDescription,
-        npcAge
-      } = this.state;
-      axios.post("https://localhost:5001/api/characters", {
-
-              npcName: npcName,
-              npcDescription: npcDescription,
-              npcAge: npcAge
-
-      },
-          { withCredentials: true } //jätteviktig. annars vet inte API:t att den får sätta cookien.
-      )
+  submitHandler = e => {
+      e.preventDefault();
+      const data = {
+        npcName: this.state.npcName,
+        npcDescription: this.state.npcDescription,
+        npcAge: this.state.npcAge
+      };
+      axios.post("https://localhost:5001/api/characters", data)
           .then(response => {
               console.log("res from reg", response);
               if (response.statusText === 'Created') {
                   console.log("statusText created")
-                  alert("Successfully created user!")
+                  alert("Successfully created character!")
               }
           })
           .catch(error => {
               console.log("registration error", error);
           });
-      event.preventDefault();
-  }
-
-
-
-
-/*submitHandler = (e) => {
-    e.preventDefault();
-    this.setState({ isSubmitting: true });
-    const response = fetch("https://localhost:5001/api/character", {
-      method: "POST",
-      body: JSON.stringify(this.state.values),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    this.setState({ isSubmitting: false });
-    const data = response.json();
-    !data.hasOwnProperty("error")
-      ? this.setState({ message: data.success })
-      : this.setState({ message: data.error, isError: true });
-    console.log(this.state)
-}*/
+  };
 
     render() {
         const {npcName, npcDescription, npcAge} = this.state;
@@ -75,7 +45,7 @@ changeHandler = (e) => {
                 <Form onSubmit={this.submitHandler}>
                     <Form.Group controlId="npcName">
                         <Form.Label>NPC Name</Form.Label>
-                        <input type="tect"
+                        <Form.Control type="text"
                                 name="npcName"
                                 id="npcName"
                                 placeholder="Name"
@@ -92,7 +62,7 @@ changeHandler = (e) => {
                         <Form.Label>NPC Age</Form.Label>
                         <Form.Control type="number" placeholder="Enter NPC age" defaultValue={npcAge} onChange={this.changeHandler} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onSubmit={console.log(npcName)}>
+                    <Button variant="primary" type="submit" onSubmit={console.log(npcName, npcDescription, npcAge)}>
                         Submit
                     </Button>
                 </Form>
