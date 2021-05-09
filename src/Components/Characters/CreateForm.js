@@ -21,8 +21,8 @@ changeHandler = (e) => {
   submitHandler = e => {
       e.preventDefault();
       const data = {
-        npcName: this.state.npcName,
-        npcDescription: this.state.npcDescription,
+        Name: this.state.npcName,
+        Description: this.state.npcDescription,
         npcAge: this.state.npcAge
       };
       axios.post("https://localhost:5001/api/characters", data)
@@ -39,7 +39,7 @@ changeHandler = (e) => {
   };
 
     render() {
-        const {npcName, npcDescription, npcAge} = this.state;
+        const {Name: npcName, npcDescription, npcAge} = this.state;
         return (
             <div>
                 <Form onSubmit={this.submitHandler}>
@@ -49,20 +49,29 @@ changeHandler = (e) => {
                                 name="npcName"
                                 id="npcName"
                                 placeholder="Name"
-                                value={this.state.npcName}
+                                value={npcName}
                                 onChange={this.changeHandler}
                              />
-                        {/* <Form.Control id={npcName} type="text" placeholder="Enter NPC name" defaultValue={npcName} onChange={this.changeHandler} /> */}
                     </Form.Group>
                     <Form.Group controlId="npcDescription">
                         <Form.Label>NPC Description</Form.Label>
-                        <Form.Control type="text" placeholder="Enter NPC description"  defaultValue={npcDescription} onChange={this.changeHandler}/>
+                        <Form.Control type="text" 
+                            name ="npcDescription" 
+                            placeholder="Enter NPC description"  
+                            value={npcDescription} 
+                            onChange={this.changeHandler}
+                            />
                     </Form.Group>
                     <Form.Group controlId="npcAge">
                         <Form.Label>NPC Age</Form.Label>
-                        <Form.Control type="number" placeholder="Enter NPC age" defaultValue={npcAge} onChange={this.changeHandler} />
+                        <Form.Control type="number" 
+                            name="npcAge"
+                            placeholder="Enter NPC age" 
+                            value={npcAge} 
+                            onChange={this.changeHandler} 
+                        />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onSubmit={console.log(npcName, npcDescription, npcAge)}>
+                    <Button variant="primary" type="submit" onSubmit={this.submitHandler}>
                         Submit
                     </Button>
                 </Form>
