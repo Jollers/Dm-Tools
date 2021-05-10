@@ -15,7 +15,7 @@ constructor(props) {
 }
 
 changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({  [e.target.name]: e.target.type === 'number' ? parseInt(e.target.value) : e.target.value});
   }
 
   submitHandler = e => {
@@ -23,8 +23,11 @@ changeHandler = (e) => {
       const data = {
         Name: this.state.npcName,
         Description: this.state.npcDescription,
-        npcAge: this.state.npcAge
+        Age: this.state.npcAge
       };
+
+      console.log(data);
+
       axios.post("https://localhost:5001/api/characters", data)
           .then(response => {
               console.log("res from reg", response);
@@ -37,7 +40,6 @@ changeHandler = (e) => {
               console.log("registration error", error);
           });
   };
-
     render() {
         const {Name: npcName, npcDescription, npcAge} = this.state;
         return (
@@ -47,7 +49,6 @@ changeHandler = (e) => {
                         <Form.Label>NPC Name</Form.Label>
                         <Form.Control type="text"
                                 name="npcName"
-                                id="npcName"
                                 placeholder="Name"
                                 value={npcName}
                                 onChange={this.changeHandler}

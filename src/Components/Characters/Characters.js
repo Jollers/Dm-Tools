@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { Container, Row, Col} from 'react-bootstrap';
+import GetCharacter from './GetCharacter'
 
 function Characters() {
     return (
@@ -14,7 +15,8 @@ function Characters() {
                         </Link>
                     </Col>
                     <Col>
-                        list
+                    List
+                    <GetCharacter />
                     </Col>
                 </Row>
             </Container>
