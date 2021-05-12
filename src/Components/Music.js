@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, Form } from "react-bootstrap";
-// import VideoDetail from "./api/video.detail";
+import VideoDetail from "./api/video.detail";
 import youtube from "./api/youtube";
 
 function Music() {
+  const [videos, setVideos] = useState();
 
-  let videos = [];
+
   const musicSearch = async (searchTerm) => {
-    const response = await youtube.get("/search", {
-      params: {
-        q: searchTerm,
-      },
-    }).then(response =>{
-      videos=[];
-      response.data.items.forEach(element => {
-        videos.push(element);
+    const response = await youtube
+      .get("/search", {
+        params: {
+          q: searchTerm,
+        },
+      })
+      .then((response) => {
+        let newVideos = [];
+        response.data.items.forEach((element) => {
+          newVideos.push(element.id.videoId);
+        });
+        setVideos(newVideos);
       });
-    })
-    console.log(videos); 
-     
-    // VideoDetail(videos[0].videoId);
+    console.log(videos);
   };
 
   return (
@@ -48,8 +50,7 @@ function Music() {
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <div>Under construction</div>
-      {/* <VideoDetail/> */}
+      <VideoDetail Videos={videos} />
     </div>
   );
 }
