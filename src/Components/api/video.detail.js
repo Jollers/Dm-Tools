@@ -1,29 +1,29 @@
 import React from "react";
+import { Container, Col, Row } from "react-bootstrap";
 
-const VideoDetail = (props) => {
-  let videoId = props.data;
+const VideoDetail = (id) => {
+  let videoId = id.id;
 
   if (!videoId) {
-      videoId = 'hWPPD5ww0eA';
+    videoId = "hWPPD5ww0eA";
   }
 
-  const url = "https://www.youtube.com/embed/"+videoId;
+  const url = "https://www.youtube.com/embed/" + videoId;
 
   return (
-    <div className="flex-column col-md-4 text-center">
-        <div>{url}</div>
-       <div className="embed-responsive embed-responsive-16by9">
-       <iframe
-       width="853"
-       height="480"
-       src={url}
-       frameBorder="0"
-       allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-       allowFullScreen
-       title="Embedded youtube"
-     /> 
-       </div>
-    </div>
+    <Container className="align-content-center">
+      <Row>
+        <Col>
+          <iframe
+            width="453"
+            height="280"
+            src={url}
+            title={videoId}
+            id={videoId}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
