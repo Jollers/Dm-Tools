@@ -8,7 +8,7 @@ function Music() {
   const [videoId, setVideoId] = useState();
 
   const musicSearch = async (searchTerm) => {
-    const response = await youtube
+    await youtube
       .get("/search", {
         params: {
           q: searchTerm,

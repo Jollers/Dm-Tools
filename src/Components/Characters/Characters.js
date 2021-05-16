@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { Form, Container, Row, Col, Button } from 'react-bootstrap';
-import Create from "./Create";
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Characters() {
     return (
-        <div class="Characters">
+        <div className="Characters">
             <h1>Characters</h1>
             <Container>
                 <Row>
