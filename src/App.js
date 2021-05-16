@@ -4,10 +4,10 @@ import Characters from './Components/Characters/Characters';
 import Character from './Components/Characters/Character';
 import Navigationbar from './Components/Navigationbar/Navigationbar';
 import Create from './Components/Characters/Create';
-import Music from './Components/Music/Music';
+import Music from './Components/Music';
 import GetCharacter from './Components/Characters/GetCharacter';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, NavLink, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
   return (

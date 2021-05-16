@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import GetCharacter from './GetCharacter'
+
 
 function Characters() {
     return (
